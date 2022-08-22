@@ -1,6 +1,6 @@
 #! /bin/bash
 
-select name in new_proj add_repo_gh proj_push ext
+select name in new_proj add_repo_gh proj_push clone_repo clone_repo_dir ext
 do
   case $name in
 	new_proj )
@@ -32,6 +32,16 @@ do
 		read -p "Enter the Commit String: " comit_str
 		git commit -m "$comit_str"
 		git push
+		;;
+	clone_repo )
+		read -p "Enter the repo link: " repo_link
+		git clone $repo_link
+		;;
+	clone_repo_dir )
+		read -p "Enter the Directory location in which you want to clone the repo: " repo_link_dir
+		cd $repo_link_dir
+		read -p "Enter the repo link: " repo_link_2
+		git clone $repo_link_2
 		;;
 	ext )
 		exit
